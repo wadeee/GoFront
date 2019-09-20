@@ -2,6 +2,39 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons')
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/2.6.95/css/materialdesignicons.min.css')
+    link(rel='stylesheet', href='https://unpkg.com/vuetify/dist/vuetify.min.css')
+    block head-tail
   body
-    block content
+    v-app#app
+      v-navigation-drawer(
+        v-model="drawer"
+        app
+        clipped
+      )
+        v-list(dense)
+          v-list-item(href='/works/e⁻')
+            v-list-item-action
+              v-icon border_all
+            v-list-item-content
+              v-list-item-title Electron Builder e⁻
+          v-list-item(@click="")
+            v-list-item-action
+              v-icon settings
+            v-list-item-content
+              v-list-item-title Settings
+      v-app-bar(
+        app
+        clipped-left
+      )
+        v-app-bar-nav-icon(@click.stop="drawer = !drawer")
+        v-toolbar-title Application
+
+      v-content
+        block content
+      v-footer(app)
+        span &copy; 2019
+    script(src='https://unpkg.com/vue/dist/vue.min.js')
+    script(src='https://unpkg.com/vuetify/dist/vuetify.min.js')
+    block body-tail
